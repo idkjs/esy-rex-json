@@ -13,7 +13,6 @@
  (action
   (run %{exe:Test.exe})))
 
-
 (rule
  (alias run_test_js)
  (deps Test.bs.js)

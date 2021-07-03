@@ -11,10 +11,8 @@
   "author": "Jared Forsyth",
   "license": "MIT",
   "scripts": {
-    "biscet:report": "esy @esy.native bisect-ppx-report html",
-    "test:native": "esy @esy.native dune runtest --instrument-with bisect_ppx --force && npm run biscet:report",
     "test-exe": "esy @esy.native b dune exec ./test/Test.exe",
-    "test-js": "esy @esy.js b dune exec ./test/Test.js",
+    "test-js": "esy @esy.js b dune build @run_test_js",
     "watch-js": "esy @esy.js b dune build @run_test_js -w",
     "postinstall": "esy @esy.js && esy @esy.native",
     "example": "node lib/js/test/Example.js",
@@ -23,10 +21,13 @@
     "build:js": "esy @esy.js bsb -make-world",
     "watch": "@esy.native build",
     "test": "npm run test:native && npm run test:js",
-    "test:js": "npm run build:js && node _build/default/test/Test.js",
+    "biscet:report": "esy @esy.native bisect-ppx-report html",
+    "test:native": "esy @esy.native dune runtest --instrument-with bisect_ppx --force && npm run biscet:report",
+    "test:js": "npm run build:js && node _build/default/test/Test.bs.js",
     "clean": "esy @esy.native dune clean && esy @esy.js bsb -clean-world",
-    "reformat": "bsrefmt --in-place $(find src -name '*.re' -print) -w 80",
-    "format:native": "esy @esy.native dune build @fmt --auto-promote"
+    "format:re": "bsrefmt --in-place $(find src -name '*.re' -print) -w 80",
+    "format:native": "esy @esy.native dune build @fmt --auto-promote",
+    "format":"npm run format:native && npm run format:re "
   },
   "devDependencies": {
     "esy": "^0.6.10"

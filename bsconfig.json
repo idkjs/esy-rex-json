@@ -10,23 +10,5 @@
     "module": "commonjs",
     "in-source": true
   },
-  "suffix": ".bs.js",
-  "entries": [
-    {
-      "backend": "native",
-      "main-module": "Json"
-    },
-    {
-      "backend": "js",
-      "main-module": "Json"
-    },
-    {
-      "backend": "native",
-      "main-module": "Test"
-    },
-    {
-      "backend": "js",
-      "main-module": "Test"
-    }
-  ]
+  "suffix": ".bs.js"
 }

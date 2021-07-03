@@ -4,4 +4,4 @@
  (wrapped false)
  (instrumentation
   (backend bisect_ppx))
-  (modes byte native))
+ (modes byte native))
