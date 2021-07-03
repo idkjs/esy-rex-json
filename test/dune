@@ -1,4 +1,21 @@
+(env
+ (dev
+  (flags
+   (:standard -warn-error -A -w -26))))
+
 (executable
-  (name Test)
-  (modules Test)
-  (modes exe byte))
+ (name Test)
+ (modules Test TestLib DemoTest BigList Demo Example)
+ (libraries Json))
+
+(rule
+ (alias runtest)
+ (action
+  (run %{exe:Test.exe})))
+
+
+(rule
+ (alias run_test_js)
+ (deps Test.bs.js)
+ (action
+  (run node ./Test.bs.js)))

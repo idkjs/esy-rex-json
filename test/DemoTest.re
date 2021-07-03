@@ -1,20 +1,30 @@
-let go = (ensure) => {
+let go = ensure => {
   open Json;
   ensure(parse("123") == Number(123.), "parse number");
   ensure(parse("[]") == Array([]), "empty array");
-  ensure(parse("[1,2,3,\n  ]") == Array([Number(1.), Number(2.), Number(3.)]), "arr");
+  ensure(
+    parse("[1,2,3,\n  ]") == Array([Number(1.), Number(2.), Number(3.)]),
+    "arr",
+  );
   ensure(parse({|"awesome\"sauces"|}) == String("awesome\"sauces"), "str");
-  ensure(parse({|{"a": 2, "b": "3"}|}) == Object([("a", Number(2.)), ("b", String("3"))]), "obj");
+  ensure(
+    parse({|{"a": 2, "b": "3"}|})
+    == Object([("a", Number(2.)), ("b", String("3"))]),
+    "obj",
+  );
   ensure(
     parse({|{"a": 2, "b": ["3", []]}|})
-    == Object([("a", Number(2.)), ("b", Array([String("3"), Array([])]))]),
-    "obj"
+    == Object([
+         ("a", Number(2.)),
+         ("b", Array([String("3"), Array([])])),
+       ]),
+    "obj",
   );
   ensure(
     parse({|{"a": 2,// hello folks
    "b": "3"}|})
     == Object([("a", Number(2.)), ("b", String("3"))]),
-    "obj"
+    "obj",
   );
   let bsconfig = {|{
     "name": "rex-json",
@@ -38,18 +48,26 @@ let go = (ensure) => {
   }
   |};
   let optBind = (fn, v) =>
-    switch v {
+    switch (v) {
     | None => None
     | Some(v) => fn(v)
     };
   let data = parse(bsconfig);
   ensure(get("name", data) == Some(String("rex-json")), "parsed name");
-  ensure(get("warnings", data) |> optBind(get("error")) == Some(String("+8")), "parsed deeper");
   ensure(
-    get("entries", data) |> optBind(nth(0)) |> optBind(get("backend")) == Some(String("native")),
-    "parsed quite deep"
+    get("warnings", data) |> optBind(get("error")) == Some(String("+8")),
+    "parsed deeper",
   );
-  ensure(parse(stringify(parse(bsconfig))) == parse(bsconfig), "parse + stringify + parse");
+  ensure(
+    get("entries", data)
+    |> optBind(nth(0))
+    |> optBind(get("backend")) == Some(String("native")),
+    "parsed quite deep",
+  );
+  ensure(
+    parse(stringify(parse(bsconfig))) == parse(bsconfig),
+    "parse + stringify + parse",
+  );
   let data = {|
   {
     "some": "json", // with a comment!
@@ -83,5 +101,5 @@ let go = (ensure) => {
   ensure(nestedObj == Some(String("nested")), "demo 3");
   ensure(json |> Json.getPath("this.does.not.exist") == None, "demo 4");
   let str = Json.stringify(json);
-  () /* back to a string */
+  (); /* back to a string */
 };

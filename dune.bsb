@@ -7,10 +7,10 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  Demo.cmj Demo.cmi Demo.cmt Demo.js)
- (deps (:inputs  Demo.ast)  (:ast_deps .././test/Demo.ast ) ../bsconfig.json)
+(targets  Demo.cmj Demo.cmi Demo.cmt Demo.bs.js)
+ (mode (promote (until-clean) (only Demo.bs.js)))(deps (:inputs  Demo.ast)  (:ast_deps .././test/Demo.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.js -o Demo.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -g -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -I . -bs-re-out -I ../src     -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.bs.js -o Demo.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
 (targets  Test.ast)
@@ -19,10 +19,10 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  Test.cmj Test.cmi Test.cmt Test.js)
- (deps (:inputs  Test.ast)  (:ast_deps .././test/Test.ast ) ../bsconfig.json)
+(targets  Test.cmj Test.cmi Test.cmt Test.bs.js)
+ (mode (promote (until-clean) (only Test.bs.js)))(deps (:inputs  Test.ast)  (:ast_deps .././test/Test.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.js -o Test.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -g -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -I . -bs-re-out -I ../src     -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.bs.js -o Test.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
 (targets  BigList.ast)
@@ -31,10 +31,10 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  BigList.cmj BigList.cmi BigList.cmt BigList.js)
- (deps (:inputs  BigList.ast)  (:ast_deps .././test/BigList.ast ) ../bsconfig.json)
+(targets  BigList.cmj BigList.cmi BigList.cmt BigList.bs.js)
+ (mode (promote (until-clean) (only BigList.bs.js)))(deps (:inputs  BigList.ast)  (:ast_deps .././test/BigList.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.js -o BigList.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -g -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -I . -bs-re-out -I ../src     -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.bs.js -o BigList.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
 (targets  Example.ast)
@@ -43,10 +43,10 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  Example.cmj Example.cmi Example.cmt Example.js)
- (deps (:inputs  Example.ast)  (:ast_deps .././test/Example.ast ) ../bsconfig.json)
+(targets  Example.cmj Example.cmi Example.cmt Example.bs.js)
+ (mode (promote (until-clean) (only Example.bs.js)))(deps (:inputs  Example.ast)  (:ast_deps .././test/Example.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.js -o Example.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -g -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -I . -bs-re-out -I ../src     -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.bs.js -o Example.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
 (targets  TestLib.ast)
@@ -55,10 +55,10 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  TestLib.cmj TestLib.cmi TestLib.cmt TestLib.js)
- (deps (:inputs  TestLib.ast)  (:ast_deps .././test/TestLib.ast ) ../bsconfig.json)
+(targets  TestLib.cmj TestLib.cmi TestLib.cmt TestLib.bs.js)
+ (mode (promote (until-clean) (only TestLib.bs.js)))(deps (:inputs  TestLib.ast)  (:ast_deps .././test/TestLib.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.js -o TestLib.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -g -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -I . -bs-re-out -I ../src     -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.bs.js -o TestLib.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
 (targets  DemoTest.ast)
@@ -67,13 +67,13 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  DemoTest.cmj DemoTest.cmi DemoTest.cmt DemoTest.js)
- (deps (:inputs  DemoTest.ast)  (:ast_deps .././test/DemoTest.ast ) ../bsconfig.json)
+(targets  DemoTest.cmj DemoTest.cmi DemoTest.cmt DemoTest.bs.js)
+ (mode (promote (until-clean) (only DemoTest.bs.js)))(deps (:inputs  DemoTest.ast)  (:ast_deps .././test/DemoTest.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -bs-re-out -I ../src -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.js -o DemoTest.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -g -root /Users/mando/Github/esy-rex-json -cwd ./test %{ast_deps}) (run bsc -I . -bs-re-out -I ../src     -w a -bs-package-name rex-json -bs-package-output commonjs:./test:.bs.js -o DemoTest.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  
-(alias (name bsb_world)(deps  DemoTest.js TestLib.js Example.js BigList.js Test.js Demo.js)
+(alias (name bsb_world)(deps  DemoTest.bs.js TestLib.bs.js Example.bs.js BigList.bs.js Test.bs.js Demo.bs.js)
 (enabled_if (= %{ocaml_version} "4.12.0"))))
 (subdir ./src
 (rule
@@ -83,13 +83,13 @@
  (run bsc  -w a -w -27 -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  (rule
-(targets  Json.cmj Json.cmi Json.cmt Json.js)
- (deps (:inputs  Json.ast)  (:ast_deps .././src/Json.ast ) ../bsconfig.json)
+(targets  Json.cmj Json.cmi Json.cmt Json.bs.js)
+ (mode (promote (until-clean) (only Json.bs.js)))(deps (:inputs  Json.ast)  (:ast_deps .././src/Json.ast ) ../bsconfig.json)
 (action
- (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./src %{ast_deps}) (run bsc -bs-re-out -I . -I ../test    -w a -bs-package-name rex-json -bs-package-output commonjs:./src:.js -o Json.cmj %{inputs})))
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/esy-rex-json -cwd ./src %{ast_deps}) (run bsc -bs-re-out -I .    -w a -bs-package-name rex-json -bs-package-output commonjs:./src:.bs.js -o Json.cmj %{inputs})))
 (enabled_if (= %{ocaml_version} "4.12.0")) )
  
-(alias (name bsb_world)(deps  Json.js)
+(alias (name bsb_world)(deps  Json.bs.js)
 (enabled_if (= %{ocaml_version} "4.12.0"))))
 
 

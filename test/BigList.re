@@ -1,27 +1,33 @@
-let go = (ensure) => {
-  let tryparse = (string) =>
-    try (Some(Json.parse(string))) {
+let go = ensure => {
+  let tryparse = string =>
+    try(Some(Json.parse(string))) {
     | _ => None
     };
-  let canParse = (string) =>
+  let canParse = string =>
     switch (Json.parse(string)) {
     | exception e =>
       ensure(
         false,
-        "Was supposed to parse: " ++ string ++ " but failed with " ++ Printexc.to_string(e)
+        "Was supposed to parse: "
+        ++ string
+        ++ " but failed with "
+        ++ Printexc.to_string(e),
       )
     | _ => ensure(true, "")
     };
-  let roundTrip = (string) =>
+  let roundTrip = string =>
     switch (Json.parse(string)) {
     | exception e =>
       ensure(
         false,
-        "Was supposed to parse: " ++ string ++ " but failed with " ++ Printexc.to_string(e)
+        "Was supposed to parse: "
+        ++ string
+        ++ " but failed with "
+        ++ Printexc.to_string(e),
       )
     | result =>
       let str = Json.stringify(result);
-      ensure(str == string, "Roundtrip " ++ str ++ " from " ++ string)
+      ensure(str == string, "Roundtrip " ++ str ++ " from " ++ string);
     };
   roundTrip("[\"new\\nline\"]");
   roundTrip("[\"new\\tline\"]");
@@ -47,7 +53,9 @@ let go = (ensure) => {
   canParse("[0e+1]");
   canParse("[0e1]");
   canParse("[ 4]");
-  canParse("[-0.000000000000000000000000000000000000000000000000000000000000000000000000000001]");
+  canParse(
+    "[-0.000000000000000000000000000000000000000000000000000000000000000000000000000001]",
+  );
   canParse("[20e1]");
   canParse("[-0]");
   canParse("[-123]");
@@ -69,7 +77,7 @@ let go = (ensure) => {
   canParse("{\"\":0}");
   canParse("{ \"min\": -1.0e+28, \"max\": 1.0e+28 }");
   canParse(
-    "{\"x\":[{\"id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}], \"id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}"
+    "{\"x\":[{\"id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}], \"id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
   );
   canParse("{\"a\":[]}");
   canParse("{ \"a\": \"b\" }");
@@ -146,5 +154,5 @@ let go = (ensure) => {
   /* true */
   roundTrip("true");
   /* false */
-  roundTrip("false")
+  roundTrip("false");
 };

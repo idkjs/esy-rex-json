@@ -6,6 +6,7 @@
   "devDependencies": {
     "@opam/ocamlformat": "*",
     "ocaml": "4.12.x",
-    "@opam/reason": "*"
+    "@opam/reason": "*",
+    "@opam/bisect_ppx": "*"
   }
 }

@@ -1,3 +1,7 @@
 (library
-  (name Json)
-  (modules Json))
+ (name Json)
+ (modules Json)
+ (wrapped false)
+ (instrumentation
+  (backend bisect_ppx))
+  (modes byte native))
