@@ -53,3 +53,9 @@ let nestedString = json
 let str = Json.stringify(json); /* back to a string */
 Js.log2(stuff, nestedString)
 ```
+
+## Notes
+
+Lots of scripts in `package.json` because trying to figure out what works with `Melange`,`dune`,`node` etc.
+
+

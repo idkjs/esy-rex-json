@@ -5,7 +5,12 @@
 
 (executable
  (name Test)
- (modules Test TestLib DemoTest BigList Demo Example)
+ (modules Test TestLib DemoTest BigList Demo)
+ (libraries Json))
+
+(executable
+ (name Example)
+ (modules Example)
  (libraries Json))
 
 (rule
@@ -18,3 +23,8 @@
  (deps Test.bs.js)
  (action
   (run node ./Test.bs.js)))
+(rule
+ (alias run_example_js)
+ (deps Example.bs.js)
+ (action
+  (run node ./Example.bs.js)))
