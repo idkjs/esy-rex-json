@@ -1,0 +1,15 @@
+(env
+ (dev
+  (flags
+   (:standard -warn-error -A -w -26))))
+
+(executable
+ (name Example)
+ (modules Example)
+ (libraries Json))
+
+(rule
+ (alias run_example_js)
+ (deps Example.bs.js)
+ (action
+  (run node ./Example.bs.js)))

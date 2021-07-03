@@ -5,7 +5,7 @@
 
 (executable
  (name Test)
- (modules Test TestLib DemoTest BigList Demo Example)
+ (modules Test TestLib DemoTest BigList Demo)
  (libraries Json))
 
 (rule

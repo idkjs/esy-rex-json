@@ -53,3 +53,8 @@ let nestedString = json
 let str = Json.stringify(json); /* back to a string */
 Js.log2(stuff, nestedString)
 ```
+
+
+# Build
+
+Need to move `Example.re` to its on directory so `dune` doesnt throw error 

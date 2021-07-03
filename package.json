@@ -15,19 +15,19 @@
     "test-js": "esy @esy.js b dune build @run_test_js",
     "watch-js": "esy @esy.js b dune build @run_test_js -w",
     "postinstall": "esy @esy.js && esy @esy.native",
-    "example": "node lib/js/test/Example.js",
-    "build": "npm run build:native && npm run build:js",
+    "example": "esy @esy.js b dune build @run_example_js",
     "build:native": "esy @esy.native dune build @all",
     "build:js": "esy @esy.js bsb -make-world",
+    "build": "npm run build:native && npm run build:js",
     "watch": "@esy.native build",
-    "test": "npm run test:native && npm run test:js",
     "biscet:report": "esy @esy.native bisect-ppx-report html",
     "test:native": "esy @esy.native dune runtest --instrument-with bisect_ppx --force && npm run biscet:report",
-    "test:js": "npm run build:js && node _build/default/test/Test.bs.js",
+    "test:js": "npm run build:js && npm run test-js",
+    "test": "npm run test:native && npm run test-js",
     "clean": "esy @esy.native dune clean && esy @esy.js bsb -clean-world",
     "format:re": "bsrefmt --in-place $(find src -name '*.re' -print) -w 80",
     "format:native": "esy @esy.native dune build @fmt --auto-promote",
-    "format":"npm run format:native && npm run format:re "
+    "format": "npm run format:native && npm run format:re "
   },
   "devDependencies": {
     "esy": "^0.6.10"

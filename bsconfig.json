@@ -5,7 +5,22 @@
     "number": "-40+6+7-26-27+32..39-28-44+45",
     "error": "+8"
   },
-  "sources": [ "src", { "dir": "test", "type": "dev" } ],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": false
+    },
+    {
+      "dir": "test",
+      "subdirs": false,
+      "type": "dev"
+    },
+    {
+      "dir": "examples",
+      "subdirs": false,
+      "type": "dev"
+    }
+  ],
   "package-specs": {
     "module": "commonjs",
     "in-source": true
