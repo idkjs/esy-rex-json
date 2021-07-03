@@ -1,9 +1,11 @@
 {
   "esy": {
-    "buildsInSource": "unsafe"
+    "buildsInSource": "_build",
+    "build": "dune build @all"
   },
   "devDependencies": {
     "@opam/ocamlformat": "*",
-    "ocaml": "4.12.x"
+    "ocaml": "4.12.x",
+    "@opam/reason": "*"
   }
 }

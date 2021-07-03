@@ -1,9 +1,5 @@
 .DS_Store
-.merlin
-.bsb.lock
 npm-debug.log
-/lib/
-/node_modules/
 user_data_highest_beaten_level
 bundler/node_modules
 .vscode
@@ -38,7 +34,7 @@ test.exe*.annot
 *.coverage
 *.sw[lmnop]
 
-_build/
+
 _doc/
 _coverage/
 _opam/
@@ -48,5 +44,6 @@ bench.tsv
 _esy
 node_modules
 lib/bs
+.merlin
 .bsb.lock
 .melange.eobjs

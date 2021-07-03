@@ -1,0 +1,4 @@
+(executable
+  (name Test)
+  (modules Test)
+  (modes exe byte))

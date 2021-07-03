@@ -11,6 +11,7 @@
   "author": "Jared Forsyth",
   "license": "MIT",
   "scripts": {
+    "test-exe": "esy @esy.native b dune exec ./test/Test.exe",
     "postinstall": "esy @esy.js && esy @esy.native",
     "example": "node lib/js/test/Example.js",
     "build": "npm run build:native &&  npm run build:js",
@@ -20,7 +21,7 @@
     "test": "npm run test:native && npm run test:js",
     "test:native": "npm run build:native && ./test.exe",
     "test:js": "npm run build:js && node lib/js/test/Test.js",
-    "clean": "@esy.native bsb -clean-world && @esy.js bsb -clean-world",
+    "clean": "esy @esy.native dune clean && esy @esy.js bsb -clean-world",
     "reformat": "bsrefmt --in-place $(find src -name '*.re' -print) -w 80"
   },
   "devDependencies": {
