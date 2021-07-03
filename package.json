@@ -14,7 +14,7 @@
     "test-exe": "esy @esy.native b dune exec ./test/Test.exe",
     "test-js": "esy @esy.js b dune build @run_test_js",
     "watch-js": "esy @esy.js b dune build @run_test_js -w",
-    "postinstall": "esy @esy.js && esy @esy.native",
+    "make": "esy @esy.js && esy @esy.native",
     "example-build-dir": "node _build/default/test/Example.bs.js",
     "example": "node test/Example.bs.js",
     "example-esy": "esy @esy.js b dune build @run_example_js",
