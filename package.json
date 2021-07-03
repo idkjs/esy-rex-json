@@ -1,0 +1,29 @@
+{
+  "name": "rex-json",
+  "version": "1.4.0",
+  "keywords": [ "BuckleScript", "Rescript", "json", "Reason" ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredly/rex-json.git"
+  },
+  "homepage": "https://github.com/jaredly/rex-json#readme",
+  "bugs": "https://github.com/jaredly/rex-json/issues",
+  "author": "Jared Forsyth",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "esy @esy.js && esy @esy.native",
+    "example": "node lib/js/test/Example.js",
+    "build": "npm run build:native &&  npm run build:js",
+    "build:native": "esy @esy.native bsb -make-world",
+    "build:js": "esy @esy.js bsb -make-world",
+    "watch": "@esy.native bsb -make-world -backend native -w",
+    "test": "npm run test:native && npm run test:js",
+    "test:native": "npm run build:native && ./test.exe",
+    "test:js": "npm run build:js && node lib/js/test/Test.js",
+    "clean": "@esy.native bsb -clean-world && @esy.js bsb -clean-world",
+    "reformat": "bsrefmt --in-place $(find src -name '*.re' -print) -w 80"
+  },
+  "devDependencies": {
+    "esy": "^0.6.10"
+  }
+}
